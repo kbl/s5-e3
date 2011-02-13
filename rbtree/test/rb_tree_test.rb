@@ -5,11 +5,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'rb_tree
 class RBTreeTest < MiniTest::Unit::TestCase
 
     def test_should_create_valid_binary_search_tree
-        tree = RBTree.new
-        tree.insert(9)
-        tree.insert(7)
-        tree.insert(11)
-        tree.insert(12)
+        tree = build_tree(9, 7, 11, 12)
 
         root = tree.root
 
@@ -23,6 +19,13 @@ class RBTreeTest < MiniTest::Unit::TestCase
 
     def assert_node_data(node, data)
         assert node.node_data == data
+    end
+
+    def build_tree(*insert_to_tree)
+        tree = RBTree.new
+        insert_to_tree.each { |element| tree.insert(element) }
+
+        tree
     end
 
 end
