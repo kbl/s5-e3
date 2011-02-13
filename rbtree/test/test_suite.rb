@@ -1,0 +1,14 @@
+require 'test/unit/testsuite'
+require 'test/unit/ui/console/testrunner'
+require 'test/tree_node_test'
+
+class TestSuite
+
+    def self.suite
+        suite = Test::Unit::TestSuite.new
+        suite << TreeNodeTest.suite
+    end
+
+end
+
+Test::Unit::UI::Console::TestRunner.run(TestSuite)
