@@ -3,9 +3,9 @@ require 'test/unit'
 
 class TreeNodeTest < Test::Unit::TestCase
 
-    def test_tree_node_should_have_default_black_color_property
+    def test_tree_node_should_be_red_by_default
         node_color = TreeNode.new.color
-        assert 'black' == node_color
+        assert 'red' == node_color
     end
 
     def test_new_node_childs_should_be_nils
@@ -24,6 +24,22 @@ class TreeNodeTest < Test::Unit::TestCase
         node2 = TreeNode.new(111)
 
         assert (node1 <=> node2) == 1
+    end
+
+    def test_should_return_true_for_filled_node
+        node = TreeNode.new(false)
+        assert node.filled?
+    end
+
+    def test_should_return_false_for_empty_node
+        node = TreeNode.new
+        assert (not node.filled?)
+    end
+
+    def TODO_test_shoul_be_possible_to_compare_nodes_with_other_comparable
+        node = TreeNode.new(123)
+
+        assert (node <=> 123) == 0
     end
 
 end
