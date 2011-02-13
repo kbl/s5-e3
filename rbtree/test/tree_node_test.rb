@@ -37,7 +37,8 @@ class TreeNodeTest < MiniTest::Unit::TestCase
         assert (not node.filled?)
     end
 
-    def TODO_test_shoul_be_possible_to_compare_nodes_with_other_comparable
+    def test_shoul_be_possible_to_compare_nodes_with_other_comparable
+        skip('TODO feature')
         node = TreeNode.new(123)
 
         assert (node <=> 123) == 0
