@@ -8,20 +8,21 @@ class TreeNode
     BLACK = 'black'
 
     attr_reader :color
-    attr_accessor :left, :right, :node_data
+    attr_accessor :left, :right
+    attr_accessor :key, :value 
 
-    def initialize(node_data = nil, color = RED)
-        @color = color
-        @node_data = node_data
+    def initialize(key, value = nil)
+        @color = RED
+        @key = key
+        @value = value
     end
 
     def <=>(other_node)
-        return node_data <=> other_node.node_data if other_node.method(:node_data)
-        node_data <=> other_node
+        @key <=> other_node.key
     end
 
-    def filled?
-        not node_data == nil
+    def to_s
+        "#{color[0]} #{key}:#{value}"
     end
 
 end

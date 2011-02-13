@@ -2,19 +2,32 @@ class RBTree
     
     attr :root
 
-    def insert(data_to_insert)
-        @root = insert_to_subtree(@root, data_to_insert)
+    def insert(key, value)
+        @root = insert_to_subtree(@root, key, value)
+    end
+
+    def visualize_tree
+        visualize_node(@root)
     end
 
     private
 
-    def insert_to_subtree(root, data_to_insert)
-        return TreeNode.new(data_to_insert) if root.nil?
+    def visualize_node(node)
+        return if node.nil?
+        p node
+        p "<"
+        visualize_node(node.left) unless node.left.nil?
+        p ">"
+        visualize_node(node.right) unless node.right.nil?
+    end
 
-        if root.node_data > data_to_insert
-            root.left = insert_to_subtree(root.left, data_to_insert)
-        elsif root.node_data < data_to_insert
-            root.right = insert_to_subtree(root.right, data_to_insert)
+    def insert_to_subtree(root, key, value)
+        return TreeNode.new(key, value) if root.nil?
+
+        if root.key > key
+            root.left = insert_to_subtree(root.left, key, value)
+        elsif root.key < key
+            root.right = insert_to_subtree(root.right, key, value)
         end
 
         root
