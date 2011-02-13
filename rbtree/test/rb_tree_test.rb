@@ -1,7 +1,8 @@
-require 'lib/rb_tree'
-require 'test/unit'
+require 'minitest/autorun'
 
-class RBTreeTest < Test::Unit::TestCase
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'rb_tree'))
+
+class RBTreeTest < MiniTest::Unit::TestCase
 
     def test_should_create_valid_binary_search_tree
         tree = RBTree.new

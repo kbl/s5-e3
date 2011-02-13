@@ -1,16 +1,6 @@
-require 'test/unit/testsuite'
-require 'test/unit/ui/console/testrunner'
-require 'test/tree_node_test'
-require 'test/rb_tree_test'
+require 'minitest/autorun'
 
-class TestSuite
+require File.expand_path(File.join(File.dirname(__FILE__), 'tree_node_test'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'rb_tree_test'))
 
-    def self.suite
-        suite = Test::Unit::TestSuite.new
-        suite << TreeNodeTest.suite
-        suite << RBTreeTest.suite
-    end
-
-end
-
-Test::Unit::UI::Console::TestRunner.run(TestSuite)
+MiniTest::Unit.autorun

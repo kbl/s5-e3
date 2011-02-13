@@ -1,7 +1,8 @@
-require 'lib/tree_node'
-require 'test/unit'
+require 'minitest/autorun'
 
-class TreeNodeTest < Test::Unit::TestCase
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'tree_node'))
+
+class TreeNodeTest < MiniTest::Unit::TestCase
 
     def test_tree_node_should_be_red_by_default
         node_color = TreeNode.new.color
