@@ -27,4 +27,15 @@ class TreeNodeTest < MiniTest::Unit::TestCase
         assert (node1 <=> node2) == 1
     end
 
+    def test_should_properly_color_node
+        node = TreeNode.new(222)
+        assert 'red' == node.color
+
+        node.color_black
+        assert 'black' == node.color
+
+        node.color_red
+        assert 'red' == node.color
+    end
+
 end

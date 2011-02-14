@@ -17,6 +17,14 @@ class TreeNode
         @value = value
     end
 
+    def color_black
+        @color = BLACK
+    end
+
+    def color_red
+        @color = RED
+    end
+
     def <=>(other_node)
         @key <=> other_node.key
     end

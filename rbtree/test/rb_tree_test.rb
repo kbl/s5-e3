@@ -6,15 +6,31 @@ class RBTreeTest < MiniTest::Unit::TestCase
 
     def test_should_create_valid_binary_search_tree
         tree = build_tree([9, 'a'], [7, 'b'], [11, 'c'], [12, 'd'])
-
         root = tree.root
 
         assert_node(root, 9, 'a')
         assert_node(root.left, 7, 'b')
         assert_node(root.right, 11, 'c')
         assert_node(root.right.right, 12, 'd')
+    end
 
-        tree.visualize_tree
+    def test_should_properly_make_single_left_rotation
+        tree = build_tree([9, 'a'], [7, 'b'], [11, 'c'], [10, 'd'], [12, 'e'])
+        root = tree.root
+
+        assert_node(root, 9, 'a')
+        assert_node(root.left, 7, 'b')
+        assert_node(root.right, 11, 'c')
+        assert_node(root.right.left, 10, 'd')
+        assert_node(root.right.right, 12, 'e')
+
+        root = tree.single_rotation(tree.root, 'left')
+
+        assert_node(root, 11, 'c')
+        assert_node(root.left, 9, 'a')
+        assert_node(root.left.left, 7, 'b')
+        assert_node(root.left.right, 10, 'd')
+        assert_node(root.right, 12, 'e')
     end
 
     private
