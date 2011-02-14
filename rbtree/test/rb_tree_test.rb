@@ -33,6 +33,29 @@ class RBTreeTest < MiniTest::Unit::TestCase
         assert_node(root.right, 12, 'e')
     end
 
+    def test_should_properly_make_single_right_rotation
+        tree = build_tree([9, 'a'], [7, 'b'], [8, 'c'], [6, 'd'], [11, 'e'], [10, 'f'], [12, 'g'])
+        root = tree.root
+
+        assert_node(root, 9, 'a')
+        assert_node(root.left, 7, 'b')
+        assert_node(root.left.left, 6, 'd')
+        assert_node(root.left.right, 8, 'c')
+        assert_node(root.right, 11, 'e')
+        assert_node(root.right.left, 10, 'f')
+        assert_node(root.right.right, 12, 'g')
+
+        root = tree.single_rotation(tree.root, 'right')
+
+        assert_node(root, 7, 'b')
+        assert_node(root.left, 6, 'd')
+        assert_node(root.right, 9, 'a')
+        assert_node(root.right.left, 8, 'c')
+        assert_node(root.right.right, 11, 'e')
+        assert_node(root.right.right.left, 10, 'f')
+        assert_node(root.right.right.right, 12, 'g')
+    end
+
     private
 
     def assert_node(node, key, value)
