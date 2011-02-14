@@ -25,6 +25,10 @@ class TreeNode
         @color = RED
     end
 
+    def red?
+        @color == RED
+    end
+
     def <=>(other_node)
         @key <=> other_node.key
     end

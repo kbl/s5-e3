@@ -5,8 +5,9 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'tree_no
 class TreeNodeTest < MiniTest::Unit::TestCase
 
     def test_tree_node_should_be_red_by_default
-        node_color = TreeNode.new(1).color
-        assert 'red' == node_color
+        node = TreeNode.new(1)
+        assert node.color == 'red'
+        assert node.red?
     end
 
     def test_new_node_childs_should_be_nils
